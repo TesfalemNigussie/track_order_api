@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model request {
+  id         Int     @unique() @default(autoincrement())
+  itemName   String
+  PickupLat  Decimal
+  PickupLng  Decimal
+  pickupName String
+  desLat     Decimal
+  desLng     Decimal
+  desName    String
+  status     String
+}
+
+model user {
+  id                 Int      @unique() @default(autoincrement())
+  socketId           String
+  currentLoctionLat  Decimal?
+  currentLocationLng Decimal?
+}
